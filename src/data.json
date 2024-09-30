@@ -1,32 +1,32 @@
 {
-  "date": "1970년 01월 01일, 목요일 오전 12시 00분",
-  "location": "○○○웨딩, ○층 ○○홀",
-  "gretting": "서로 마주 보며 다져온 사랑을\n이제 함께 한곳을 바라보며 걸어갈 수 있는\n큰 사랑으로 키우고자 합니다.\n저희 두 사람이 사랑의 이름으로 지켜나갈 수 있게\n앞날을 축복해 주시면 감사하겠습니다.",
+  "date": "Ngày 26 tháng 11 năm 2024",
+  "location": "Maison De Charmé",
+  "gretting": "Yêu từ cái nhìn đầu tiên, gặp nhau tưởng là duyên, cưới nhau tưởng là nợ, nhưng rồi tụi mình nhận ra rằng duyên nợ chỉ là những khái niệm mơ hồ, bởi cuối cùng, tất cả đều là lựa chọn. Lựa chọn cùng nhau vượt qua những vui buồn, thử thách và cùng xây dựng một cuộc sống chung. Mỗi ngày không chỉ là dòng chảy của thời gian, mà là những mảnh ghép kết nối tụi mình gần nhau hơn, hiểu nhau hơn và trân trọng nhau hơn. Cưới nhau không phải là cái kết, mà là một khởi đầu mới – nơi tụi mình chọn yêu thương, chọn gắn kết và cùng nhau trưởng thành. Những lời chúc từ bạn sẽ là nguồn động viên quý giá để tụi mình tiếp tục vun đắp tình yêu này, biến hành trình chung trở nên trọn vẹn hơn với niềm vui và hạnh phúc.",
   "groom": {
-    "name": "○○○",
-    "account_number": "○○은행 ***-***-******",
+    "name": "Quốc Đạt",
+    "account_number": "MB Bank: 1010106828888",
     "parents": {
       "mother": {
-        "name": "○○○",
-        "account_number": "○○은행 ***-***-******"
+        "name": "Minh Cẩm",
+        "account_number": "*********"
       },
       "father": {
-        "name": "○○○",
-        "account_number": "○○은행 ***-***-******"
+        "name": "Văn Hoàng",
+        "account_number": "*********"
       }
     }
   },
   "bride": {
-    "name": "○○○",
-    "account_number": "○○은행 ***-***-******",
+    "name": "Đoan Hiền",
+    "account_number": "*********",
     "parents": {
       "mother": {
-        "name": "○○○",
-        "account_number": "○○은행 ***-***-******"
+        "name": "Bạch Cúc",
+        "account_number": "*********"
       },
       "father": {
-        "name": "○○○",
-        "account_number": "○○은행 ***-***-******"
+        "name": "Văn An",
+        "account_number": "*********"
       }
     }
   },

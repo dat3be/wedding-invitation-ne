@@ -41,13 +41,21 @@ const images = [
     original: "./assets/Gallery_Photo_6.png",
     thumbnail: "./assets/Gallery_Photo_6.png",
   },
+  {
+    original: "./assets/Gallery_Photo_7.png",
+    thumbnail: "./assets/Gallery_Photo_7.png"
+  },
+  {
+    original: "./assets/Gallery_Photo_8.png",
+    thumbnail: "./assets/Gallery_Photo_8.png"
+  }
 ];
 
 export default function Gallery() {
   return (
     <Wrapper>
       <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-        <Title>우리의 아름다운 순간</Title>
+        <Title>Khoảnh khắc của tụi mình</Title>
       </Divider>
       <ImageGallery
         showPlayButton={false}

@@ -70,8 +70,8 @@ export default function Share({ data }: ShareProps) {
         objectType: "feed",
         container: "#sendKakao",
         content: {
-          title: `${data?.groom?.name}❤${data?.bride?.name} 결혼식에 초대합니다`,
-          description: "아래의 '청첩장 열기' 버튼을 눌러 읽어주세요🤵👰",
+          title: `${data?.groom?.name}❤${data?.bride?.name} mời bạn đến dự đám cưới`,
+          description: "Vui lòng đọc bằng cách nhấp vào nút 'Mở lời mời đám cưới' bên dưới.🤵👰",
           imageUrl: data?.kakaotalk?.share_image,
           link: {
             mobileWebUrl: data?.kakaotalk?.wedding_invitation_url,
@@ -80,7 +80,7 @@ export default function Share({ data }: ShareProps) {
         },
         buttons: [
           {
-            title: "청첩장 열기",
+            title: "Mở lời mời đám cưới",
             link: {
               mobileWebUrl: data?.kakaotalk?.wedding_invitation_url,
               webUrl: data?.kakaotalk?.wedding_invitation_url,
@@ -91,7 +91,7 @@ export default function Share({ data }: ShareProps) {
       });
       setTimeout(() => {
         document.getElementById("sendKakao")?.click();
-        message.success("카카오톡으로 청첩장을 공유합니다!");
+        message.success("Chia sẻ lời mời đám cưới thông qua KakaoTalk!");
       }, 100);
     } else {
       try {
@@ -103,7 +103,7 @@ export default function Share({ data }: ShareProps) {
   return (
     <Wrapper>
       <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-        <Title>청첩장 공유하기</Title>
+        <Title>Chia sẻ lời mời đám cưới</Title>
       </Divider>
       <KakaoTalkShareButton
         style={{ margin: 8 }}
@@ -112,16 +112,16 @@ export default function Share({ data }: ShareProps) {
         size="large"
         onClick={() => setShareCount(shareCount + 1)}
       >
-        카카오톡으로 공유하기
+        Chia sẻ trên KakaoTalk
       </KakaoTalkShareButton>
       <CopyToClipboard text={data?.kakaotalk?.wedding_invitation_url ?? ""}>
         <LinkShareButton
           style={{ margin: 8 }}
           icon={<LinkOutlined />}
           size="large"
-          onClick={() => message.success("청첩장 링크가 복사되었습니다.")}
+          onClick={() => message.success("Liên kết lời mời đám cưới đã được sao chép.")}
         >
-          링크로 공유하기
+          Chia sẻ với liên kết
         </LinkShareButton>
       </CopyToClipboard>
     </Wrapper>
