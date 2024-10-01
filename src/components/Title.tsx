@@ -1,88 +1,109 @@
 import { styled } from "@stitches/react";
-import { Divider } from "antd";
+import { useState, useRef, useEffect } from "react";
 
+// Layout to cover the entire screen
 const Layout = styled("div", {
   width: "100%",
   height: "100vh",
   overflow: "hidden",
   margin: "0 auto",
   position: "relative",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 
-  // Ensure it adapts well for mobile screens
   "@media(max-width: 768px)": {
     height: "100vh",
   },
 });
 
+// TitleWrapper for wedding details in the center of the screen
 const TitleWrapper = styled("div", {
-  position: "absolute",
-  width: "100%",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
   textAlign: "center",
-  color: "#fff",  // Ensure text color contrasts with the background
-
-  // Text shadow for improved readability over video backgrounds
-  textShadow: "-1px 0 #9e9e9e, 0 1px #9e9e9e, 1px 0 #9e9e9e, 0 -1px #9e9e9e",
-
-  // Mobile optimization
+  color: "#fff",
+  textShadow: "0 2px 4px rgba(0, 0, 0, 0.6)", // Subtle shadow for better readability
   padding: "0 16px",
+
   "@media(max-width: 768px)": {
     top: "45%",
   },
 
-  // Smooth fade-in animation
   animation: "fadein 3s ease-in-out",
 });
 
+// Video Background styling to cover the entire screen
 const VideoBackground = styled("video", {
-  position: "fixed",  // Fix the video to cover the entire background
+  position: "fixed",
   top: 0,
   left: 0,
-  width: "100vw",  // Ensure video takes up the entire viewport width
-  height: "100vh",  // Ensure video takes up the entire viewport height
+  width: "100vw",
+  height: "100vh",
   objectFit: "cover",
-  objectPosition: "center",
-  zIndex: -1,  // Make sure the video stays in the background
+  zIndex: -1, // Make sure the video stays in the background
   backgroundColor: "#aeb8b3 !important",
-  opacity: 0.9,  // Keep slight opacity for readability
+  opacity: 0.85, // Reduced opacity for a subtle overlay effect
 
-  // Ensure video maintains aspect ratio on mobile
   "@media(max-width: 768px)": {
     objectFit: "cover",
   },
 });
 
-const WeddingInvitation = styled("p", {
-  fontSize: "2.5vw",  // Use vw for scalable fonts
-  opacity: 0.85,
-  marginBottom: "16px",
+// Styled mute/unmute button
+const MuteButton = styled("button", {
+  position: "absolute",
+  bottom: "40px",
+  left: "50%",
+  transform: "translateX(-50%)",
+  padding: "12px 36px",
+  fontSize: "16px",
+  borderRadius: "24px",
+  backgroundColor: "rgba(255, 255, 255, 0.9)", // Transparent button
+  color: "#333",
+  border: "none",
+  cursor: "pointer",
+  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+  transition: "background-color 0.3s, transform 0.2s ease-in-out",
+  zIndex: 10,
 
-  // Adjust font size for smaller screens
+  "&:hover": {
+    backgroundColor: "#f0f0f0",
+    transform: "translateX(-50%) scale(1.05)",
+  },
+
+  "@media(max-width: 768px)": {
+    bottom: "20px",
+    padding: "10px 30px",
+  },
+});
+
+// Typography for wedding invitation text
+const Typography = styled("p", {
+  fontSize: "2.5vw",
+  marginBottom: "16px",
+  opacity: 0.85,
+
   "@media(max-width: 768px)": {
     fontSize: "4vw",
   },
 });
 
+// Bold text for groom and bride
 const GroomBride = styled("p", {
-  fontSize: "6vw",
+  fontSize: "5.5vw",
   fontWeight: "bold",
-  opacity: 0.95,
   marginBottom: "16px",
+  opacity: 0.95,
 
-  // Adjust for smaller screens
   "@media(max-width: 768px)": {
-    fontSize: "8vw",
+    fontSize: "7.5vw",
   },
 });
 
+// Text for date and location
 const Schedule = styled("p", {
   fontSize: "4vw",
   opacity: 0.85,
-  marginBottom: "24px",
 
-  // Adjust for smaller screens
   "@media(max-width: 768px)": {
     fontSize: "5vw",
   },
@@ -93,16 +114,40 @@ type TitleProps = {
 };
 
 export default function Title({ data }: TitleProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(false); // Unmuted by default
+
+  // Toggle mute/unmute when the button is clicked
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  useEffect(() => {
+    if (videoRef.current) {
+      // Attempt to play the video on load, unmuted
+      videoRef.current.muted = false; // Ensure it's not muted
+      videoRef.current.play().catch((error) => {
+        console.log("Autoplay with sound was blocked, muting video.", error);
+        videoRef.current.muted = true; // Mute if autoplay with sound is blocked
+        setIsMuted(true); // Update the button state to reflect the muted status
+      });
+    }
+  }, []);
+
   return (
     <Layout>
-      {/* Optimized video background for mobile */}
-      <VideoBackground autoPlay loop muted playsInline>
+      {/* Background video */}
+      <VideoBackground ref={videoRef} autoPlay loop muted={isMuted} playsInline>
         <source src="./assets/BackgroundVideo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </VideoBackground>
 
-      {/* Title wrapper containing wedding info */}
+      {/* Wedding invitation details */}
       <TitleWrapper>
-        <WeddingInvitation>WEDDING INVITATION</WeddingInvitation>
+        <Typography>WEDDING INVITATION - ĐẠT & HIỀN</Typography>
         <GroomBride>
           {data?.groom?.name} &#38; {data?.bride?.name}
         </GroomBride>
@@ -112,6 +157,11 @@ export default function Title({ data }: TitleProps) {
           {data?.location}
         </Schedule>
       </TitleWrapper>
+
+      {/* Mute/Unmute button */}
+      <MuteButton onClick={toggleMute}>
+        {isMuted ? "Unmute" : "Mute"}
+      </MuteButton>
     </Layout>
   );
 }
