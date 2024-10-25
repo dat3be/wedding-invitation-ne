@@ -70,7 +70,7 @@ export default function CongratulatoryMoney({
           twoToneColor="#829fe0"
         />
         <br />
-        <SubContent>Xác nhận số tài khoản của chú rể</SubContent>
+        <SubContent>Nhà Rể</SubContent>
       </ContactButton>
       <ContactButton onClick={() => setBrideVisible(true)}>
         <CheckCircleTwoTone
@@ -78,10 +78,10 @@ export default function CongratulatoryMoney({
           twoToneColor="#fe7daf"
         />
         <br />
-        <SubContent>Xác nhận số tài khoản của cô dâu</SubContent>
+        <SubContent>Nhà Dâu</SubContent>
       </ContactButton>
       <Modal
-        title={<b>Số tài khoản chú rể</b>}
+        title={<b>Ting Ting cho Nhà Rể</b>}
         open={groomVisible}
         onOk={() => setGroomVisible(false)}
         onCancel={() => setGroomVisible(false)}
@@ -91,7 +91,7 @@ export default function CongratulatoryMoney({
       >
         {data?.groom?.parents?.father && (
           <div>
-            <b>부) {data?.groom?.parents?.father?.name}</b>
+            <b>Ba) {data?.groom?.parents?.father?.name}</b>
             <Divider type="vertical" />
             <CopyToClipboard
               text={data?.groom?.parents?.father?.account_number}
@@ -101,14 +101,14 @@ export default function CongratulatoryMoney({
                 style={{ padding: 0, margin: 0 }}
                 onClick={() => message.success("Số tài khoản đã được sao chép.")}
               >
-                {data?.groom?.parents?.father?.account_number}
+                
               </Button>
             </CopyToClipboard>
           </div>
         )}
         {data?.groom?.parents?.mother && (
           <div style={{ marginTop: 24, marginBottom: 24 }}>
-            <b>모) {data?.groom?.parents?.mother.name}</b>
+            <b>Mẹ) {data?.groom?.parents?.mother.name}</b>
             <Divider type="vertical" />
             <CopyToClipboard text={data?.groom?.parents?.mother.account_number}>
               <Button
@@ -116,14 +116,14 @@ export default function CongratulatoryMoney({
                 style={{ padding: 0, margin: 0 }}
                 onClick={() => message.success("Số tài khoản đã được sao chép.")}
               >
-                {data?.groom?.parents?.mother.account_number}
+                
               </Button>
             </CopyToClipboard>
           </div>
         )}
         {data?.groom && (
           <div>
-            <b>신랑 {data?.groom?.name}</b>
+            <b>Út Nam {data?.groom?.name}</b>
             <Divider type="vertical" />
             <CopyToClipboard text={data?.groom?.account_number}>
               <Button
@@ -143,7 +143,7 @@ export default function CongratulatoryMoney({
         </div>
       </Modal>
       <Modal
-        title={<b>Số tài khoản cô dâu</b>}
+        title={<b>Ting Ting cho nhà dâu</b>}
         open={brideVisible}
         onOk={() => setBrideVisible(false)}
         onCancel={() => setBrideVisible(false)}
@@ -153,7 +153,7 @@ export default function CongratulatoryMoney({
       >
         {data?.bride?.parents?.father && (
           <div>
-            <b>부) {data?.bride?.parents?.father?.name}</b>
+            <b>Ba) {data?.bride?.parents?.father?.name}</b>
             <Divider type="vertical" />
             <CopyToClipboard
               text={data?.bride?.parents?.father?.account_number}
@@ -163,14 +163,14 @@ export default function CongratulatoryMoney({
                 style={{ padding: 0, margin: 0 }}
                 onClick={() => message.success("Số tài khoản đã được sao chép.")}
               >
-                {data?.bride?.parents?.father?.account_number}
+                
               </Button>
             </CopyToClipboard>
           </div>
         )}
         {data?.bride?.parents?.mother && (
           <div style={{ marginTop: 24, marginBottom: 24 }}>
-            <b>모) {data?.bride?.parents?.mother?.name}</b>
+            <b>Mẹ) {data?.bride?.parents?.mother?.name}</b>
             <Divider type="vertical" />
             <CopyToClipboard
               text={data?.bride?.parents?.mother?.account_number}
@@ -180,14 +180,14 @@ export default function CongratulatoryMoney({
                 style={{ padding: 0, margin: 0 }}
                 onClick={() => message.success("Số tài khoản đã được sao chép.")}
               >
-                {data?.bride?.parents?.mother?.account_number}
+                
               </Button>
             </CopyToClipboard>
           </div>
         )}
         {data?.bride && (
           <div>
-            <b>신부 {data?.bride?.name}</b>
+            <b>Quý Nữ {data?.bride?.name}</b>
             <Divider type="vertical" />
             <CopyToClipboard text={data?.bride?.account_number}>
               <Button

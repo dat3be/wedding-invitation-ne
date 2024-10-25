@@ -105,7 +105,7 @@ export default function Share({ data }: ShareProps) {
       <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
         <Title>Chia sẻ lời mời đám cưới</Title>
       </Divider>
-      <KakaoTalkShareButton
+      {/* <KakaoTalkShareButton
         style={{ margin: 8 }}
         icon={<MessageFilled />}
         id="sendKakao"
@@ -113,7 +113,7 @@ export default function Share({ data }: ShareProps) {
         onClick={() => setShareCount(shareCount + 1)}
       >
         Chia sẻ trên KakaoTalk
-      </KakaoTalkShareButton>
+      </KakaoTalkShareButton> */}
       <CopyToClipboard text={data?.kakaotalk?.wedding_invitation_url ?? ""}>
         <LinkShareButton
           style={{ margin: 8 }}

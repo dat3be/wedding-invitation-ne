@@ -96,13 +96,13 @@ export default function Gretting({ data }: GrettingProps) {
           </div>
         ))}
       </Content>
-      <InfoBox>
+      {/* <InfoBox>
         <GroomBride>
           {data?.groom?.parents?.father?.name} · {data?.groom?.parents?.mother?.name} · Thứ Nam {data?.groom?.name}
           <br />
           {data?.bride?.parents?.father?.name} · {data?.bride?.parents?.mother?.name} · Quý Nữ {data?.bride?.name}
         </GroomBride>
-      </InfoBox>
+      </InfoBox> */}
     </Wrapper>
   );
 }
