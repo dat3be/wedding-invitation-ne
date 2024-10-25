@@ -1,57 +1,81 @@
 import { styled } from "@stitches/react";
 import { Divider } from "antd";
 
-// Wrapper with enhanced visual design
 const Wrapper = styled("div", {
-  background: "#ffffff", // Clean white background for contrast
-  backgroundImage: "url(./assets/GroovePaper.png)", // Subtle texture
+  background: "#ffffff",
+  backgroundImage: "url(./assets/GroovePaper.png)",
   width: "100%",
-  maxWidth: "800px", // Max width to ensure it's not too wide on larger screens
-  margin: "0 auto", // Center the content on the page
+  maxWidth: "1000px", // Matches the video container width
+  margin: "0 auto",
   padding: "32px",
-  borderRadius: "12px", // Rounded corners for a modern look
-  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
-  border: "1px solid #e0e0e0", // Light border to frame the content
+  borderRadius: "12px",
+  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
+  border: "1px solid #e0e0e0",
+  overflowX: "hidden",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  "@media(max-width: 768px)": {
+    padding: "16px",
+    maxWidth: "90vw", // Responsive width for smaller screens
+  }
 });
 
-// Title styling to make the title more elegant
 const Title = styled("p", {
-  fontSize: "4vh", // Increased font size for better readability
+  fontSize: "4vh",
   fontWeight: "bold",
   opacity: 0.9,
-  marginBottom: "24px", // Add spacing below the title
-  textAlign: "center", // Center-align the title
-  color: "#333", // Darker color for contrast
+  marginBottom: "24px",
+  textAlign: "center",
+  color: "#333",
+  "@media(max-width: 768px)": {
+    fontSize: "3.5vh",
+    wordBreak: "break-word",
+  }
 });
 
-// Content section for the greeting text
 const Content = styled("div", {
-  fontSize: "2.25vh", // Larger font size for readability
-  lineHeight: 1.8, // Adjusted line height for more space between lines
+  fontSize: "2.25vh",
+  lineHeight: 1.8,
   opacity: 0.85,
-  marginBottom: "24px", // Add spacing below the content
-  textAlign: "center", // Center-align the content
-  color: "#555", // Softer text color for a more subtle look
-  padding: "0 16px", // Padding for content readability on mobile
+  marginBottom: "24px",
+  textAlign: "center",
+  color: "#555",
+  padding: "0 16px",
+  wordBreak: "break-word",
+  "@media(max-width: 768px)": {
+    fontSize: "2vh",
+    padding: "0 8px",
+  }
 });
 
-// Styling for the groom and bride details
 const GroomBride = styled("p", {
   fontSize: "2.25vh",
   lineHeight: 1.8,
   opacity: 0.9,
   marginBottom: 0,
-  textAlign: "center", // Center the text
-  color: "#444", // Softer text color for groom and bride details
+  textAlign: "center",
+  color: "#444",
+  wordWrap: "break-word",
+  "@media(max-width: 768px)": {
+    fontSize: "2vh",
+  }
 });
 
-// Additional visual improvements for spacing and organization
 const InfoBox = styled("div", {
-  backgroundColor: "#f9f9f9", // Slightly off-white background
-  padding: "24px", // Padding for separation
-  borderRadius: "8px", // Rounded edges to keep the design soft
-  border: "1px solid #eaeaea", // Light border for emphasis
-  marginTop: "24px", // Space above the groom/bride section
+  backgroundColor: "#f9f9f9",
+  padding: "24px",
+  borderRadius: "8px",
+  border: "1px solid #eaeaea",
+  marginTop: "24px",
+  width: "100%",
+  maxWidth: "800px", // Keep this inside the container
+  textAlign: "center",
+  "@media(max-width: 768px)": {
+    padding: "16px",
+    maxWidth: "100%", // Ensures responsiveness
+  }
 });
 
 type GrettingProps = {
@@ -64,8 +88,6 @@ export default function Gretting({ data }: GrettingProps) {
       <Divider style={{ marginTop: 0, marginBottom: 32 }} plain>
         <Title>Tôi sắp kết hôn!</Title>
       </Divider>
-
-      {/* Greeting message */}
       <Content>
         {data?.gretting?.split("\n")?.map((value, index) => (
           <div key={index}>
@@ -74,8 +96,6 @@ export default function Gretting({ data }: GrettingProps) {
           </div>
         ))}
       </Content>
-
-      {/* Groom and Bride Information */}
       <InfoBox>
         <GroomBride>
           {data?.groom?.parents?.father?.name} · {data?.groom?.parents?.mother?.name} · Thứ Nam {data?.groom?.name}

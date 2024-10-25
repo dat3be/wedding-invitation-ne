@@ -1,7 +1,6 @@
 import { styled } from "@stitches/react";
 import { useState, useRef, useEffect } from "react";
 
-// Layout to cover the entire screen
 const Layout = styled("div", {
   width: "100%",
   height: "100vh",
@@ -17,11 +16,10 @@ const Layout = styled("div", {
   },
 });
 
-// TitleWrapper for wedding details in the center of the screen
 const TitleWrapper = styled("div", {
   textAlign: "center",
   color: "#fff",
-  textShadow: "0 2px 4px rgba(0, 0, 0, 0.6)", // Subtle shadow for better readability
+  textShadow: "0 2px 4px rgba(0, 0, 0, 0.6)",
   padding: "0 16px",
 
   "@media(max-width: 768px)": {
@@ -31,7 +29,6 @@ const TitleWrapper = styled("div", {
   animation: "fadein 3s ease-in-out",
 });
 
-// Video Background styling to cover the entire screen
 const VideoBackground = styled("video", {
   position: "fixed",
   top: 0,
@@ -39,16 +36,15 @@ const VideoBackground = styled("video", {
   width: "100vw",
   height: "100vh",
   objectFit: "cover",
-  zIndex: -1, // Make sure the video stays in the background
+  zIndex: -1,
   backgroundColor: "#aeb8b3 !important",
-  opacity: 0.85, // Reduced opacity for a subtle overlay effect
+  opacity: 0.85,
 
   "@media(max-width: 768px)": {
     objectFit: "cover",
   },
 });
 
-// Styled mute/unmute button
 const MuteButton = styled("button", {
   position: "absolute",
   bottom: "40px",
@@ -57,7 +53,7 @@ const MuteButton = styled("button", {
   padding: "12px 36px",
   fontSize: "16px",
   borderRadius: "24px",
-  backgroundColor: "rgba(255, 255, 255, 0.9)", // Transparent button
+  backgroundColor: "rgba(255, 255, 255, 0.9)",
   color: "#333",
   border: "none",
   cursor: "pointer",
@@ -76,7 +72,6 @@ const MuteButton = styled("button", {
   },
 });
 
-// Typography for wedding invitation text
 const Typography = styled("p", {
   fontSize: "2.5vw",
   marginBottom: "16px",
@@ -87,7 +82,6 @@ const Typography = styled("p", {
   },
 });
 
-// Bold text for groom and bride
 const GroomBride = styled("p", {
   fontSize: "5.5vw",
   fontWeight: "bold",
@@ -99,7 +93,6 @@ const GroomBride = styled("p", {
   },
 });
 
-// Text for date and location
 const Schedule = styled("p", {
   fontSize: "4vw",
   opacity: 0.85,
@@ -115,9 +108,8 @@ type TitleProps = {
 
 export default function Title({ data }: TitleProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(false); // Unmuted by default
+  const [isMuted, setIsMuted] = useState(false);
 
-  // Toggle mute/unmute when the button is clicked
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
@@ -127,25 +119,21 @@ export default function Title({ data }: TitleProps) {
 
   useEffect(() => {
     if (videoRef.current) {
-      // Attempt to play the video on load, unmuted
-      videoRef.current.muted = false; // Ensure it's not muted
+      videoRef.current.muted = false;
       videoRef.current.play().catch((error) => {
         console.log("Autoplay with sound was blocked, muting video.", error);
-        
-        setIsMuted(true); // Update the button state to reflect the muted status
+        setIsMuted(true);
       });
     }
   }, []);
 
   return (
     <Layout>
-      {/* Background video */}
       <VideoBackground ref={videoRef} autoPlay loop muted={isMuted} playsInline>
         <source src="./assets/BackgroundVideo.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </VideoBackground>
 
-      {/* Wedding invitation details */}
       <TitleWrapper>
         <Typography>WEDDING INVITATION - ĐẠT & HIỀN</Typography>
         <GroomBride>
@@ -158,7 +146,6 @@ export default function Title({ data }: TitleProps) {
         </Schedule>
       </TitleWrapper>
 
-      {/* Mute/Unmute button */}
       <MuteButton onClick={toggleMute}>
         {isMuted ? "Unmute" : "Mute"}
       </MuteButton>
