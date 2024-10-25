@@ -131,7 +131,7 @@ export default function Title({ data }: TitleProps) {
       videoRef.current.muted = false; // Ensure it's not muted
       videoRef.current.play().catch((error) => {
         console.log("Autoplay with sound was blocked, muting video.", error);
-        videoRef.current.muted = true; // Mute if autoplay with sound is blocked
+        
         setIsMuted(true); // Update the button state to reflect the muted status
       });
     }

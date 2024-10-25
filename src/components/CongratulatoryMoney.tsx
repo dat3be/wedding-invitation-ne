@@ -210,7 +210,8 @@ export default function CongratulatoryMoney({
   );
 }
 
-
 // 1. hoangkimgroup.vn - Soạn báo giá
 // 2. mmohub.io - Chiều follow cafe, ok sẽ tạo group kỹ thuật tư vấn với GB.
-// 3. urbox.vn - Hẹn cafe vào thứ tư tuần này
+// 3. urbox.vn - có contact của CTO 
+// 4. Nội thất QiConcept - Cafe trao đổi về O365, chưa có nhu cầu
+// 5. Phí migrate 
